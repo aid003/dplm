@@ -1,0 +1,45 @@
+@import '../../../shared/styles/base.css';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 480px;
+}
+
+.header {
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #3a3a3a;
+  background: #202127;
+  color: #fff;
+}
+
+.muted {
+  opacity: 0.7;
+}
+
+.error {
+  color: #f66;
+}
+
+.select {
+  flex: 1;
+  min-width: 280px;
+  background: #202127;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 8px;
+  border: 1px solid #3a3a3a;
+}

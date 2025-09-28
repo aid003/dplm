@@ -1,0 +1,23 @@
+.actionColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.errorText {
+  color: #f66;
+  max-width: 520px;
+  text-align: left;
+}
+
+.outputPre {
+  max-width: 520px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  text-align: left;
+  background: #1e1f25;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #3a3a3a;
+}
+

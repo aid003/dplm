@@ -1,0 +1,30 @@
+.root {
+  margin-top: 16px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.muted {
+  opacity: 0.7;
+}
+.error {
+  color: #f66;
+  margin-bottom: 8px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.select {
+  min-width: 280px;
+  background: #202127;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 8px;
+  border: 1px solid #3a3a3a;
+}
+
