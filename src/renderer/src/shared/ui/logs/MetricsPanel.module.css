@@ -1,0 +1,65 @@
+.panel {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.title {
+  margin: 0 0 16px 0;
+  color: #e5e5e5;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.metric {
+  background: #0f0f0f;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.label {
+  color: #9ca3af;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.value {
+  color: #e5e5e5;
+  font-size: 14px;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.value.success {
+  color: #10b981;
+}
+
+.value.error {
+  color: #ef4444;
+}
+
+.value.gpu {
+  color: #3b82f6;
+}
+
+.value.cpu {
+  color: #f59e0b;
+}
+
+.subValue {
+  color: #9ca3af;
+  font-size: 11px;
+  margin-top: 2px;
+}

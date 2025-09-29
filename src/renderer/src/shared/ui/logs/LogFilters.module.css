@@ -1,0 +1,125 @@
+.filters {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+
+.row:last-child {
+  margin-bottom: 0;
+}
+
+.group {
+  flex: 1;
+}
+
+.searchGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  color: #e5e5e5;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #d1d5db;
+  font-size: 13px;
+}
+
+.checkbox input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  user-select: none;
+}
+
+.searchInput {
+  background: #0f0f0f;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: #e5e5e5;
+  font-size: 13px;
+  width: 100%;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.searchInput::placeholder {
+  color: #6b7280;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.button {
+  background: #374151;
+  border: 1px solid #4b5563;
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: #e5e5e5;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.button:hover {
+  background: #4b5563;
+  border-color: #6b7280;
+}
+
+.button.active {
+  background: #3b82f6;
+  border-color: #2563eb;
+  color: white;
+}
+
+.button.danger {
+  background: #dc2626;
+  border-color: #b91c1c;
+  color: white;
+}
+
+.button.danger:hover {
+  background: #b91c1c;
+  border-color: #991b1b;
+}

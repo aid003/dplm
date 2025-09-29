@@ -29,13 +29,33 @@ const api = {
     ipcRenderer.invoke('ml:setModel', modelPath, opts) as Promise<{ ok?: true; error?: string }>,
   chooseDirectory: () =>
     ipcRenderer.invoke('fs:chooseDirectory') as Promise<
-      | { path: string }
-      | { canceled: true }
-      | { error: string }
+      { path: string } | { canceled: true } | { error: string }
     >,
-  getSettings: () => ipcRenderer.invoke('settings:get') as Promise<{ modelDir?: string; modelPath?: string }>,
+  getSettings: () => ipcRenderer.invoke('settings:get') as Promise<any>,
+  setSettings: (settings: any) => ipcRenderer.invoke('settings:set', settings) as Promise<any>,
   setModelPrefs: (prefs: { modelDir?: string; modelPath?: string }) =>
-    ipcRenderer.invoke('settings:setModelPrefs', prefs) as Promise<{ modelDir?: string; modelPath?: string }>
+    ipcRenderer.invoke('settings:setModelPrefs', prefs) as Promise<{
+      modelDir?: string
+      modelPath?: string
+    }>,
+  resetSettings: () => ipcRenderer.invoke('settings:reset') as Promise<any>,
+  exportSettings: () => ipcRenderer.invoke('settings:export') as Promise<any>,
+  importSettings: (settings: any) =>
+    ipcRenderer.invoke('settings:import', settings) as Promise<any>,
+  getSystemInfo: () =>
+    ipcRenderer.invoke('system:info') as Promise<{
+      platform: string
+      arch: string
+      nodeVersion: string
+      uptime: number
+      memoryUsage: { used: number; total: number }
+      processMemory: {
+        heapUsed: number
+        heapTotal: number
+        external: number
+        rss: number
+      }
+    }>
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

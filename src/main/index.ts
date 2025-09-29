@@ -1,10 +1,11 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
-import { electronApp, optimizer } from '@electron-toolkit/utils'
+// import { electronApp, optimizer } from '@electron-toolkit/utils'
 import { MLService } from './ml'
 import { createMainWindow } from './windows/createMainWindow'
 import { registerMlIpc } from './ipc/mlIpc'
 import { registerFsIpc } from './ipc/fsIpc'
 import { registerSettingsIpc } from './ipc/settingsIpc'
+import { registerSystemIpc } from './ipc/systemIpc'
 import { log } from './log/logger'
 
 let ml: MLService | null = null
@@ -18,27 +19,31 @@ function createWindow(): BrowserWindow {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   // Set app user model id for windows
-  electronApp.setAppUserModelId('com.electron')
+  // try {
+  //   electronApp.setAppUserModelId('com.electron')
+  // } catch (e) {
+  //   log.warn('Failed to set app user model id:', e)
+  // }
 
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
   // see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
-  app.on('browser-window-created', (_, window) => {
-    optimizer.watchWindowShortcuts(window)
-  })
+  // app.on('browser-window-created', (_, window) => {
+  //   optimizer.watchWindowShortcuts(window)
+  // })
 
   ipcMain.on('ping', () => log.info('pong'))
 
   // ML service
   ml = new MLService()
-  ml
-    .init()
+  ml.init()
     .then(() => log.info('ML initialized'))
     .catch((e: unknown) => log.error('ML init failed:', e))
 
   registerMlIpc(ml)
   registerFsIpc()
   registerSettingsIpc()
+  registerSystemIpc()
 
   createWindow()
 

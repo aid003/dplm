@@ -11,7 +11,13 @@ export const ipc = {
   listModels: (rootDir?: string) => window.api.listModels(rootDir),
   setModel: (modelPath: string, opts?: { nCtx?: number; gpuLayers?: number; threads?: number }) =>
     window.api.setModel(modelPath, opts),
-  chooseDirectory: () => window.api.chooseDirectory()
+  chooseDirectory: () => window.api.chooseDirectory(),
+  getSystemInfo: () => window.api.getSystemInfo(),
+  getSettings: () => window.api.getSettings(),
+  setSettings: (settings: any) => window.api.setSettings(settings),
+  resetSettings: () => window.api.resetSettings(),
+  exportSettings: () => window.api.exportSettings(),
+  importSettings: (settings: any) => window.api.importSettings(settings)
 }
 
 export type {} // keep as module for future shared API additions

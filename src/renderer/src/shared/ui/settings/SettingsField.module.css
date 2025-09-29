@@ -1,0 +1,40 @@
+.field {
+  margin-bottom: 24px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.label label {
+  color: #e5e5e5;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.required {
+  color: #ef4444;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.description {
+  color: #9ca3af;
+  font-size: 12px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

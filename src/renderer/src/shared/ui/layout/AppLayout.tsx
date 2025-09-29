@@ -1,13 +1,6 @@
 import { useState } from 'react'
 import styles from './AppLayout.module.css'
-// import { useModal } from '../../shared/ui/modal'
-// import { ModelSelectModal } from '../../features/model-select/ui/ModelSelectModal'
 import {
-  LuHome,
-  LuFileCode,
-  LuSearchCheck,
-  LuBookOpen,
-  LuActivity,
   LuSettings,
   LuChevronFirst,
   LuChevronLast
@@ -15,44 +8,26 @@ import {
 
 type TabKey = 'home' | 'editor' | 'analysis' | 'docs' | 'logs' | 'settings'
 
+interface Tab {
+  key: TabKey
+  label: string
+  icon: React.ReactNode
+}
+
+interface AppLayoutProps {
+  tabs: Tab[]
+  currentTab: TabKey
+  onTabChange: (tab: TabKey) => void
+  Content: React.ComponentType
+}
+
 export function AppLayout({
-  Home,
-  Editor,
-  Analysis,
-  Docs,
-  Logs,
-  Settings
-}: {
-  Home: React.ComponentType
-  Editor: React.ComponentType
-  Analysis: React.ComponentType
-  Docs: React.ComponentType
-  Logs: React.ComponentType
-  Settings: React.ComponentType
-}): React.JSX.Element {
-  const [tab, setTab] = useState<TabKey>('home')
+  tabs,
+  currentTab,
+  onTabChange,
+  Content
+}: AppLayoutProps): React.JSX.Element {
   const [collapsed, setCollapsed] = useState(false)
-
-  const tabs: { key: TabKey; label: string; icon: React.ReactNode }[] = [
-    { key: 'home', label: 'Главная', icon: <LuHome /> },
-    { key: 'editor', label: 'Редактор кода', icon: <LuFileCode /> },
-    { key: 'analysis', label: 'Анализ кода', icon: <LuSearchCheck /> },
-    { key: 'docs', label: 'Документация', icon: <LuBookOpen /> },
-    { key: 'logs', label: 'Логи и метрики', icon: <LuActivity /> }
-  ]
-
-  const Content =
-    tab === 'home'
-      ? Home
-      : tab === 'editor'
-        ? Editor
-        : tab === 'analysis'
-          ? Analysis
-          : tab === 'docs'
-            ? Docs
-            : tab === 'logs'
-              ? Logs
-              : Settings
 
   return (
     <div className={`${styles.root} ${collapsed ? styles.collapsed : ''}`}>
@@ -64,8 +39,8 @@ export function AppLayout({
           {tabs.map((t) => (
             <button
               key={t.key}
-              className={`${styles.navBtn} ${tab === t.key ? styles.active : ''}`}
-              onClick={() => setTab(t.key)}
+              className={`${styles.navBtn} ${currentTab === t.key ? styles.active : ''}`}
+              onClick={() => onTabChange(t.key)}
             >
               <span aria-hidden style={{ fontSize: '20px' }}>
                 {t.icon}
@@ -88,7 +63,7 @@ export function AppLayout({
         <button
           className={styles.gearBtn}
           aria-label="Settings"
-          onClick={() => setTab('settings')}
+          onClick={() => onTabChange('settings')}
           title="Настройки"
         >
           <LuSettings />
